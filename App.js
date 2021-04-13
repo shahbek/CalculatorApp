@@ -49,7 +49,7 @@ import {
   
   onButtonPress(text) {
   console.log(text);
-
+  console.log("Char at "+ (this.state.expressionText).charAt(1))
   if (text == '=') {
 
     return (this.validateEquation() && this.calculationResult(this.state.expressionText));
@@ -65,7 +65,7 @@ import {
       expressionText: (0 + this.state.expressionText + text),
       });
   }
-  else if((this.state.expressionText).startsWith('0')){
+  else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).charAt(1) >= 0){
     this.setState({
       expressionText: ((this.state.expressionText).slice(1)) + text,
       });
