@@ -14,7 +14,7 @@ import {
   super();
   this.state = {
   expressionText: "",
-  answerText: ""
+  answerText: 0
   };
   this.TopRow = ['AC','%','DEL'];
   this.operations = ['+','-','*','/','='];
@@ -45,10 +45,12 @@ import {
   return true
   }
   
+  
   onButtonPress(text) {
   console.log(text);
   
   if (text == '=') {
+
     return this.validateEquation() && this.calculationResult(this.state.expressionText);
   }
   
@@ -75,7 +77,7 @@ import {
   case '*':
   
   case '/':
-  
+      
   
   const lastChar=this.state.expressionText.split("").pop()
   
@@ -84,7 +86,7 @@ import {
   if(this.state.text=="")return
   this.setState(
   {
-  expressionText: this.state.expressionText+ operation
+  expressionText: this.state.expressionText+ operation,
   })
   }
   }
@@ -101,11 +103,14 @@ import {
       break
       case 'AC':
       this.setState({expressionText: ""});
-      this.setState({answerText:""});
+      this.setState({answerText:0});
       break
       case '%':
-      this.setState({expressionText: this.state.expressionText});
-      this.setState({answerText: ((this.state.expressionText)/100)});
+      this.validateEquation() && this.calculationResult(this.state.expressionText);
+      this.setState({
+          expressionText: this.state.expressionText,
+          answerText: ((parseInt(this.state.expressionText))/100)
+          });
       break
     }
   }
