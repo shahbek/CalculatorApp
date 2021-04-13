@@ -65,6 +65,11 @@ import {
       expressionText: (0 + this.state.expressionText + text),
       });
   }
+  else if((this.state.expressionText).startsWith('0')){
+    this.setState({
+      expressionText: ((this.state.expressionText).slice(1)) + text,
+      });
+  }
   else {
     this.setState({
       expressionText: (this.state.expressionText + text),
