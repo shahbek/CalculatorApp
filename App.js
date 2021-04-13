@@ -24,7 +24,7 @@ import {
   calculationResult() {
   const text = this.state.expressionText;
   this.setState({
-  answerText: eval(text).toLocaleString()
+  answerText: eval(text)
   })
   }
   
@@ -51,11 +51,11 @@ import {
   
   if (text == '=') {
 
-    return this.validateEquation() && this.calculationResult(this.state.expressionText);
+    return (this.validateEquation() && this.calculationResult(this.state.expressionText));
   }
   
   this.setState({
-  expressionText: this.state.expressionText + text,
+  expressionText: (this.state.expressionText + text),
   });
   }
   
@@ -76,7 +76,6 @@ import {
   case '*':
   
   case '/':
-      
   
   const lastChar=this.state.expressionText.split("").pop()
   
@@ -105,10 +104,9 @@ import {
       this.setState({answerText:0});
       break
       case '%':
-      this.validateEquation() && this.calculationResult(this.state.expressionText);
       this.setState({
           expressionText: this.state.expressionText,
-          answerText: ((this.state.answerText)/100)
+          answerText: ((parseInt(this.state.answerText))/100).toLocaleString()
           });
       break
     }
@@ -196,7 +194,7 @@ elevation: 5,}}>
   <Text style={styles.expressionText}>{this.state.expressionText}</Text>
   </View>
   <View style={styles.calculation}>
-  <Text style={styles.answerText}>{this.state.answerText} </Text>
+  <Text style={styles.answerText}>{(this.state.answerText).toLocaleString()} </Text>
   
   </View>
   <View style={styles.buttons}>
