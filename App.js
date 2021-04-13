@@ -106,7 +106,7 @@ import {
       case '%':
       this.setState({
           expressionText: this.state.expressionText,
-          answerText: ((parseInt(this.state.answerText))/100).toLocaleString()
+          answerText: ((parseInt(this.state.answerText))/100)
           });
       break
     }
@@ -191,7 +191,7 @@ elevation: 5,}}>
   return (
   <View style={styles.container}>
   <View style={styles.result}>
-  <Text style={styles.expressionText}>{this.state.expressionText}</Text>
+  <Text style={styles.expressionText}>{(this.state.expressionText)}</Text>
   </View>
   <View style={styles.calculation}>
   <Text style={styles.answerText}>{(this.state.answerText).toLocaleString()} </Text>
