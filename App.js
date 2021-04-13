@@ -54,7 +54,6 @@ import {
     return this.validateEquation() && this.calculationResult(this.state.expressionText);
   }
   
-  
   this.setState({
   expressionText: this.state.expressionText + text,
   });
@@ -109,7 +108,7 @@ import {
       this.validateEquation() && this.calculationResult(this.state.expressionText);
       this.setState({
           expressionText: this.state.expressionText,
-          answerText: ((parseInt(this.state.expressionText))/100)
+          answerText: ((this.state.answerText)/100)
           });
       break
     }
