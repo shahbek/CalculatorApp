@@ -17,7 +17,7 @@ import {
   answerText: 0
   };
   this.TopRow = ['AC','%','DEL'];
-  this.operations = ['+','-','*','/','='];
+  this.operations = ['+','-','*','/','=','.'];
   }
 
   
@@ -41,6 +41,10 @@ import {
   case '*':
   
   case '/':
+
+  case '.':
+
+  
   return false
   }
   return true
@@ -63,6 +67,11 @@ import {
   else if((this.state.expressionText).startsWith('*')){
     this.setState({
       expressionText: (0 + this.state.expressionText + text),
+      });
+  }
+  else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).charAt(1) >= '.'){
+    this.setState({
+      expressionText: (this.state.expressionText) + text,
       });
   }
   else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).charAt(1) >= 0){
@@ -96,6 +105,9 @@ import {
   
   case '/':
   
+  case '.':
+
+  
   const lastChar=this.state.expressionText.split("").pop()
   
   if(this.operations.indexOf(lastChar) >0 ) return
@@ -125,7 +137,7 @@ import {
       case '%':
       this.setState({
           expressionText: this.state.expressionText,
-          answerText: ((parseInt(this.state.answerText))/100)
+          answerText: ((parseInt(this.state.answerText))/100.0000)
           });
       break
     }
