@@ -23,6 +23,7 @@ import {
   
   calculationResult() {
   const text = this.state.expressionText;
+  
   this.setState({
   answerText: eval(text)
   })
@@ -48,15 +49,28 @@ import {
   
   onButtonPress(text) {
   console.log(text);
-  
+
   if (text == '=') {
 
     return (this.validateEquation() && this.calculationResult(this.state.expressionText));
   }
   
-  this.setState({
-  expressionText: (this.state.expressionText + text),
-  });
+  if((this.state.expressionText).startsWith('/')){
+    this.setState({
+    expressionText: (0 + this.state.expressionText + text),
+    });
+  }
+  else if((this.state.expressionText).startsWith('*')){
+    this.setState({
+      expressionText: (0 + this.state.expressionText + text),
+      });
+  }
+  else {
+    this.setState({
+      expressionText: (this.state.expressionText + text),
+      });
+  }
+
   }
   
   operate(operation) {
@@ -194,7 +208,7 @@ elevation: 5,}}>
   <Text style={styles.expressionText}>{(this.state.expressionText)}</Text>
   </View>
   <View style={styles.calculation}>
-  <Text style={styles.answerText}>{(this.state.answerText).toLocaleString()} </Text>
+  <Text style={styles.answerText}>{((this.state.answerText).toLocaleString())} </Text>
   
   </View>
   <View style={styles.buttons}>
