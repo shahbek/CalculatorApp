@@ -69,12 +69,12 @@ import {
       expressionText: (0 + this.state.expressionText + text),
       });
   }
-  else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).charAt(1) >= '.'){
+  else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).length > 1 && (this.state.expressionText).charAt(1) >= '.'){
     this.setState({
       expressionText: (this.state.expressionText) + text,
       });
   }
-  else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).charAt(1) >= 0){
+  else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).length > 1 && (this.state.expressionText).charAt(1) >= 0){
     this.setState({
       expressionText: ((this.state.expressionText).slice(1)) + text,
       });
