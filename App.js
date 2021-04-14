@@ -1,3 +1,6 @@
+//SHAHBEK MIRU 
+//T00622610
+//COMP 2160 CALCULATOR ASSIGNMENT
 import { StatusBar } from 'expo-status-bar';
 import React, {Component} from 'react';
 import {
