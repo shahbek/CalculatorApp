@@ -23,9 +23,14 @@ import {
   
   calculationResult() {
   const text = this.state.expressionText;
-  
+  if(text == "")
+  {
+    this.setState({expressionText: "0"})
+  }
+  else
   this.setState({
-  answerText: eval(text)
+  answerText: eval(text),
+  expressionText: (eval(text)).toString()
   })
   }
   
@@ -58,7 +63,6 @@ import {
 
     return (this.validateEquation() && this.calculationResult(this.state.expressionText));
   }
-  
   if((this.state.expressionText).startsWith('/')){
     this.setState({
     expressionText: (0 + this.state.expressionText + text),
@@ -67,16 +71,6 @@ import {
   else if((this.state.expressionText).startsWith('*')){
     this.setState({
       expressionText: (0 + this.state.expressionText + text),
-      });
-  }
-  else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).length > 1 && (this.state.expressionText).charAt(1) >= '.'){
-    this.setState({
-      expressionText: (this.state.expressionText) + text,
-      });
-  }
-  else if((this.state.expressionText).startsWith('0') && (this.state.expressionText).length > 1 && (this.state.expressionText).charAt(1) >= 0){
-    this.setState({
-      expressionText: ((this.state.expressionText).slice(1)) + text,
       });
   }
   else {
@@ -92,13 +86,11 @@ import {
   
   case '=':
     this.validateEquation() && this.calculationResult(this.state.expressionText);
-    this.setState({
-      expressionText: this.state.expressionText,
-      });
+    
   break
 
   case '+': 
-  
+
   case '-':
   
   case '*':
