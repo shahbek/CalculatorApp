@@ -73,6 +73,7 @@ import {
       expressionText: (0 + this.state.expressionText + text),
       });
   }
+  else if (typeof(text) == "undefined"){this.setState({expressionText: this.state.expressionText})}
   else {
     this.setState({
       expressionText: (this.state.expressionText + text),
