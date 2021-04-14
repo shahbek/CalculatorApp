@@ -9,6 +9,7 @@ import {
   TouchableOpacity
   } from 'react-native';
   
+
   export default class App extends Component {
   constructor() {
   super();
@@ -22,6 +23,7 @@ import {
 
   
   calculationResult() {
+  const Parser = require('expr-eval').Parser;
   const text = this.state.expressionText;
   if(text == "")
   {
@@ -29,8 +31,8 @@ import {
   }
   else
   this.setState({
-  answerText: eval(text),
-  expressionText: (eval(text)).toString()
+  answerText: Parser.evaluate(text),
+  expressionText: (Parser.evaluate(text)).toString()
   })
   }
   
